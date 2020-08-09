@@ -85,20 +85,20 @@ def split_image_arr(images, testPercent = 0.3):
     
     return train_data, test_data
 
-def gen_test_data(images, extension):
+def gen_test_data(path, images, extension):
     cont = 0
     for image in images:
-        download(os.path.join(path_test, '{}.{}'.format(cont, extension)), image.original)
+        download(os.path.join(path, '{}.{}'.format(cont, extension)), image.original)
         cont += 1
 
-def gen_train_data(images, extension):
+def gen_train_data(path_train, path_mask, images, extension):
     cont = 0
     for image in images:
         
-        original_path = download(os.path.join(path_train_image, '{}.{}'.format(cont, extension)), image.original)
+        original_path = download(os.path.join(path_train, '{}.{}'.format(cont, extension)), image.original)
         to_gray_scale(original_path)
 
-        mask_path = download(os.path.join(path_train_mask, '{}.{}'.format(cont, extension)), image.mask)
+        mask_path = download(os.path.join(path_mask, '{}.{}'.format(cont, extension)), image.mask)
         
         # labelbox return an image with background black and mask white, 
         # but for unet we need background white and mask black
