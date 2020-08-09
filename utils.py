@@ -89,7 +89,7 @@ def gen_test_data(path, images, extension):
     cont = 0
     for image in images:
         path = download(os.path.join(path, '{}.{}'.format(cont, extension)), image.original)
-        to_gray_scale(original_path)
+        to_gray_scale(path)
         cont += 1
 
 def gen_train_data(path_train, path_mask, images, extension):
