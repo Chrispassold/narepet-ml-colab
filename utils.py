@@ -25,7 +25,7 @@ def createFolders(paths):
         createFolder(folder)
 
 # download from url and save
-def download_grayscale(name, url):
+def download(name, url):
     r = requests.get(url)
     with open(name, "wb") as file:
         file.write(r.content)
