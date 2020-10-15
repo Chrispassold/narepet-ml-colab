@@ -85,11 +85,12 @@ def split_image_arr(images, testPercent = 0.3):
     
     return train_data, test_data
 
-def gen_test_data(path, images, extension):
+def gen_test_data(path, images, extension, as_gray=True):
     cont = 0
     for image in images:
         test_path = download(os.path.join(path, '{}.{}'.format(cont, extension)), image.original)
-        to_gray_scale(test_path)
+        if as_gray:
+            to_gray_scale(test_path)
         cont += 1
 
 def gen_train_data(path_train, path_mask, images, extension):
