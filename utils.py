@@ -93,12 +93,13 @@ def gen_test_data(path, images, extension, as_gray=True):
             to_gray_scale(test_path)
         cont += 1
 
-def gen_train_data(path_train, path_mask, images, extension):
+def gen_train_data(path_train, path_mask, images, extension, as_gray=True):
     cont = 0
     for image in images:
         
         original_path = download(os.path.join(path_train, '{}.{}'.format(cont, extension)), image.original)
-        to_gray_scale(original_path)
+        if as_gray:
+            to_gray_scale(original_path)
 
         mask_path = download(os.path.join(path_mask, '{}.{}'.format(cont, extension)), image.mask)
         
